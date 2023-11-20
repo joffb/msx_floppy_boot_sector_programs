@@ -11,19 +11,26 @@ They were written using the Glass assembler (https://www.grauw.nl/projects/glass
 
 ## Breakout
 This is a simple breakout clone.
+
 The ball's angle changes when it hits the paddle and can either bounce off at 45 degrees or 22.5 degrees.
 The ball speeds up after 8, 16, 32 and 64 blocks have been broken.
 You've got 4 lives and it's game over when you lose them all.
-You move the paddle with the left and right cursor keys and after winning or losing, you can press space to restart the game.
 
+- Move the paddle with the Left and Right cursor keys
+- After winning or losing, you can press Space to restart the game.
 
+![a game of breakout](https://github.com/joffb/msx_floppy_boot_sector_programs/blob/main/screenshots/breakout.JPG?raw=true)
 
 ## Sequencer
-This is a 32 step sequencer with 3 channels of playback, using the AY-3-8910. Each step can either be a note or a rest.
-Sequences can be 2, 4, 8, 16 or 32 steps long. The amount of time each step takes can be changed from between 1 frame and 255 frames.
-The editing cursor can be moved around with the cursor keys.
-Notes are changed by holding Space and pressing Up and Down.
-Octaves are changed by holding Space and pressing Left and Right.
-The sequencer can be sped up or slowed down with Ins or Home.
-The number of steps in the sequence can be changed by holding Space and pressing Ins or Home.
+This is a 32 step sequencer with 3 channels of playback, using the AY-3-8910.
 
+Each step can either be a note or a rest.
+Sequences can be 2, 4, 8, 16 or 32 steps long. The amount of time each step takes can be changed from between 1 frame and 255 frames.
+
+- The editing cursor can be moved around with the cursor keys.
+- Notes are changed by holding Space and pressing Up and Down.
+- Octaves are changed by holding Space and pressing Left and Right.
+- The sequencer can be sped up or slowed down with Ins or Home.
+- The number of steps in the sequence can be changed by holding Space and pressing Ins or Home.
+
+![a game of breakout](https://github.com/joffb/msx_floppy_boot_sector_programs/blob/main/screenshots/sequencer.JPG?raw=true)
