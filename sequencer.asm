@@ -110,7 +110,7 @@ SECTOR_ALIGN: MACRO
 		db 0xeb, 0xfe, 0x90
 		
 		db "JOE SEQ "	; oem name
-		dw 512	; sector size
+		dw SECTOR_SIZE	; sector size
 		db 2			; sectors per cluster
 		dw 1			; number of reserved sectors
 		
