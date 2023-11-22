@@ -114,21 +114,14 @@ SECTOR_ALIGN: MACRO
         ; set stack pointer
         ld sp, 0xf100
 
-		; copy all 512 bytes of boot sector to 0xc000
-		
-		; drive number
-		; also clear carry flag, as we want to read from the disk
-		xor a
-		; number of sectors to copy
-		ld b, 1
-		; media id
-		ld c, MEDIA_DESCRIPTOR
-		; first sector = 0
-		ld d, a
-		ld e, a
-		; target address
-		ld hl, 0xc000
-		call PHYDIO
+		; copy the top 256 of the bytes of boot sector to 0xc100
+		; the full 512 byte sector is loaded to a place in memory but only
+		; the first 256 bytes are copied to 0xc000 by the bios
+		ld hl, (0xf351)
+		inc h
+		ld bc, 0x0100
+		ld de, 0xc100
+		ldir
 
 init:
 

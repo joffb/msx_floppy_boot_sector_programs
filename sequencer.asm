@@ -110,7 +110,7 @@ SECTOR_ALIGN: MACRO
 		db 0xeb, 0xfe, 0x90
 		
 		db "JOE SEQ "	; oem name
-		dw SECTOR_SIZE	; sector size
+		dw 512	; sector size
 		db 2			; sectors per cluster
 		dw 1			; number of reserved sectors
 		
@@ -142,20 +142,14 @@ SECTOR_ALIGN: MACRO
 			; set stack pointer as the disk rom sets it to 0xc200 when it's loading the bootstrap
 			ld sp, 0xf100
 			
-			; copy all 512 bytes of boot sector to 0xc000
-			; set drive number 0
-			; also clears carry flag, as we want to read from the disk
-			xor a
-			; number of sectors to copy
-			ld b, 1
-			; media id
-			ld c, MEDIA_DESCRIPTOR
-			; first sector, set de = 0
-			ld d, a
-			ld e, a
-			; target address
-			ld hl, BOOTSTRAP_ORIGIN
-			call PHYDIO
+			; copy the top 256 of the bytes of boot sector to 0xc100
+			; the full 512 byte sector is loaded to a place in memory but only
+			; the first 256 bytes are copied to 0xc000 by the bios
+			ld hl, (0xf351)
+			inc h
+			ld bc, 0x0100
+			ld de, 0xc100
+			ldir
 			
 			; SCREEN1 - 32x24 text mode
 			call INIT32
